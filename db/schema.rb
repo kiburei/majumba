@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127152432) do
+ActiveRecord::Schema.define(version: 20180129080504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,4 +23,16 @@ ActiveRecord::Schema.define(version: 20180127152432) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "units", force: :cascade do |t|
+    t.string "desc"
+    t.string "house_type"
+    t.integer "bedrooms"
+    t.boolean "master_ensuite"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "rental_id"
+    t.index ["rental_id"], name: "index_units_on_rental_id"
+  end
+
+  add_foreign_key "units", "rentals"
 end
