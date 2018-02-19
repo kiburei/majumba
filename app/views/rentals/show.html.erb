@@ -15,5 +15,6 @@
   <%= @rental.location %>
 </p>
 
+<%= link_to 'Add Unit', new_rental_unit_path(@rental) %> |
 <%= link_to 'Edit', edit_rental_path(@rental) %> |
 <%= link_to 'Back', rentals_path %>

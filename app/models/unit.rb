@@ -1,3 +1,3 @@
 class Unit < ApplicationRecord
-  belongs_to: rental
+  belongs_to :rental
 end
