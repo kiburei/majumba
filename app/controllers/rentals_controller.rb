@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:show, :edit, :update, :destroy]
+  before_action :set_rental, only: [:show, :edit, :update, :destroy, :new_units, :create_units]
 
   # GET /rentals
   # GET /rentals.json
@@ -15,6 +15,24 @@ class RentalsController < ApplicationController
   # GET /rentals/new
   def new
     @rental = Rental.new
+  end
+
+  def new_units
+    @units = @rental.units.build
+  end
+
+  def create_units
+    @units = @rental.units.build(unit_params)
+
+    respond_to do |format|
+      if @units.save
+        format.html { redirect_to rental_path(@rental), notice: 'unit was successfully created.' }
+        format.json { render :show, status: :created, location: @rental }
+      else
+        format.html { render :new_units }
+        format.json { render json: @rental.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /rentals/1/edit
@@ -70,5 +88,9 @@ class RentalsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def rental_params
       params.require(:rental).permit(:name, :desc, :location)
+    end
+
+    def unit_params
+      params.require(:unit).permit(:house_type, :desc, :bedrooms)
     end
 end

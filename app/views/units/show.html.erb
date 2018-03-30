@@ -1,27 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @rental.name %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @rental.desc %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @rental.location %>
-</p>
-
-<%= link_to 'Add Unit', new_units_path(:id => @rental) %> |
-<%= link_to 'Edit', edit_rental_path(@rental) %> |
-<%= link_to 'Back', rentals_path %>
-
+<h1><%= @rental.name %> Units</h1>
 <%= link_to 'Back', rental_path(@rental) %>
-
-<h3>Units</h3>
 <table>
   <tr>
     <th>House Number</th>

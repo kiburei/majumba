@@ -1,0 +1,23 @@
+<h1>Add Units to Rental</h1>
+
+<%= form_for @units, url: create_units_path(@rental) do |f| %>
+  <div class="field">
+    <%= f.label :house_type %>
+    <%= f.text_field :house_type, id: :unit_house_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :desc %>
+    <%= f.text_area :desc, id: :unit_desc %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bedrooms %>
+    <%= f.text_field :bedrooms, id: :unit_bedrooms %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
